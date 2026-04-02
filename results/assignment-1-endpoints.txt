@@ -1,0 +1,11 @@
+--- Lambda zip: ---
+{"statusCode": 200, "headers": {"Content-Type": "application/json", "X-Server-Time-Ms": "74.935", "X-Instance-Id": "2026/04/02/[$LATEST]497d979d2a2d45c4b12137b73fe8c31f", "X-Cold-Start": "true"}, "body": "{\"results\": [{\"index\": 35859, \"distance\": 12.001459121704102}, {\"index\": 24682, \"distance\": 12.059946060180664}, {\"index\": 35397, \"distance\": 12.487079620361328}, {\"index\": 20160, \"distance\": 12.489519119262695}, {\"index\": 30454, \"distance\": 12.499402046203613}], \"query_time_ms\": 74.935, \"instance_id\": \"2026/04/02/[$LATEST]497d979d2a2d45c4b12137b73fe8c31f\", \"cold_start\": true}"}
+
+--- Lambda cotainer: ---
+{"statusCode": 200, "headers": {"Content-Type": "application/json", "X-Server-Time-Ms": "80.202", "X-Instance-Id": "2026/04/02/[$LATEST]9bfccfc4e93e4f1dab8a6f49b36ebbee", "X-Cold-Start": "true"}, "body": "{\"results\": [{\"index\": 35859, \"distance\": 12.001459121704102}, {\"index\": 24682, \"distance\": 12.059946060180664}, {\"index\": 35397, \"distance\": 12.487079620361328}, {\"index\": 20160, \"distance\": 12.489519119262695}, {\"index\": 30454, \"distance\": 12.499402046203613}], \"query_time_ms\": 80.202, \"instance_id\": \"2026/04/02/[$LATEST]9bfccfc4e93e4f1dab8a6f49b36ebbee\", \"cold_start\": true}"}
+
+--- Fargate: ---
+{"instance_id":"ip-172-31-55-90.ec2.internal","query_time_ms":21.641,"results":[{"distance":12.001459121704102,"index":35859},{"distance":12.059946060180664,"index":24682},{"distance":12.487079620361328,"index":35397},{"distance":12.489519119262695,"index":20160},{"distance":12.499402046203613,"index":30454}]}
+
+--- EC2 app instance: ---
+{"instance_id":"7a54fdd5dfe1","query_time_ms":28.789,"results":[{"distance":12.001459121704102,"index":35859},{"distance":12.059946060180664,"index":24682},{"distance":12.487079620361328,"index":35397},{"distance":12.489519119262695,"index":20160},{"distance":12.499402046203613,"index":30454}]}
