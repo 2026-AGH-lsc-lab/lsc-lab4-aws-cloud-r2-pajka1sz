@@ -8,15 +8,20 @@ I deployed all required environments and they returned equal results for a given
 
 |Environment |Concurrency|p50 (ms)|p95 (ms)|p99 (ms)| Server avg (ms)|
 |-----------|-----------|--------|--------|------|-|
-|Lambda (zip)| 5 | 15.88 | 21.97 | 63.19 | - |
-|Lambda (zip)| 10| 11.46 | 18.11 | 67.09 |-|
-|Lambda (container)| 5 | 14.13 | 20.47 | 64.48 | -|
-|Lambda (container)| 10| 11.07 | 18.39 | 66.34 |-|
-|Fargate| 10 | 791.3 | 1049.4 | 1407.8 | -|
-|Fargate| 50 | 3898.5 | 4189.2 | 4215.9 |-|
-|EC2| 10 | 192.23 | 252.81 | 274.74 |-|
-|EC2| 50 | 891.7 | 955.2 | 1058.2 | 1128.5 |-|
+|Lambda (zip)| 5 | 14.66 | 22.33 |**66.93** | - |
+|Lambda (zip)| 10| 11.75 | 18.28 |**65.77** |-|
+|Lambda (container)| 5 | 15.41 | 23.25 |** 68.12** | -|
+|Lambda (container)| 10| 11.37 | 21.41 |**68.80** |-|
+|Fargate| 10 | 793.8 | 1007.0 | 1096.1 | 35.71|
+|Fargate| 50 | 3894.6 | 4279.6 | 4405.2 |35.71|
+|EC2| 10 | 194.22 | 254.04 | 283.29 |24.85|
+|EC2| 50 | 898.5 | 1062.5 | 1167.0 |24.85|
 
+Analysis:
+* The cells annotated in bold are the ones where p99 $> 2*$ p95 which signals tail latency instability.
+* Lambda's p50 doesn't change much when we use c=5 or c=10, because there is an isolated environment for each request.
+* p50 increases hugely when changing Fargate and EC2 concurrencies, because requests have to wait for a single Fargate task or EC2 instance, as there is no auto-scaling.
+* Client-side measures are much different than server-side because of TLS handshake time, network delays and long queues for Fargate and EC2.
 
 ## Assignment 4: Scenario C — Burst from Zero
 
